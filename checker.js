@@ -40,7 +40,7 @@ var getPackageInfo = function () {
 var switchVer = function (version) {
 	if (which('n')) {
 		var cleanedVersion = cleanVersion(version);
-		console.log('info: Switched node version to ' + cleanedVersion);
+		console.log(`info: Switched node version to ${cleanedVersion}`);
 		return exec('n ' + cleanedVersion);
 	}
 	throw new Error('Attempted to switch version, but n was not defined. If you want to use the --switch flag install the n manager with `npm install -g n`')
@@ -58,7 +58,7 @@ var checkVer = function () {
 			if (!args.switch) throw new Error();
 			switchVer(engineVersion);
 		} catch (err) {
-			throw new Error('Error: Current node version does not match the engines section of the package.json. Wanted ' + engineVersion + ' but was ' + process.version);
+			throw new Error(`Error: Current node version does not match the engines section of the package.json. Wanted ${engineVersion} but was ${process.version}`);
 		}
 	}
 
