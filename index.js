@@ -1,4 +1,9 @@
 require('babel-core/register');
 const checker = require('./checker').default;
 
-checker();
+try {
+	checker();
+} catch (err) {
+	console.log(err);
+	process.exit(1);
+}

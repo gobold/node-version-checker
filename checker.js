@@ -7,10 +7,10 @@ import {
 }
 from 'shelljs';
 var args = yargs.usage('Usage: $0 [options]')
-  .describe('loose', 'Check only that the current node version is greater the required engine version')
-  .describe('switch', 'If the node version doesn\'t satisfy the engine version attempt to use the n pacakage manager to switch the current node version to a compliant version.')
-  .help('h')
-  .argv;
+	.describe('loose', 'Check only that the current node version is greater the required engine version')
+	.describe('switch', 'If the node version doesn\'t satisfy the engine version attempt to use the n pacakage manager to switch the current node version to a compliant version.')
+	.help('h')
+	.argv;
 
 var strict = function (actualVersion, engineVersion) {
 	return semver.satisfies(actualVersion, engineVersion);
@@ -39,8 +39,8 @@ var getPackageInfo = function () {
 
 var switchVer = function (version) {
 	if (which('n')) {
-    var cleanedVersion = cleanVersion(version);
-    console.log('info: Switched node version to ' + cleanedVersion);
+		var cleanedVersion = cleanVersion(version);
+		console.log('info: Switched node version to ' + cleanedVersion);
 		return exec('n ' + cleanedVersion);
 	}
 	throw new Error('Attempted to switch version, but n was not defined. If you want to use the --switch flag install the n manager with `npm install -g n`')
@@ -49,8 +49,7 @@ var switchVer = function (version) {
 var checkVer = function () {
 	var packageInfo = getPackageInfo();
 	if (!packageInfo) {
-		console.log('Could not locate package.json in the current directory structure.')
-		process.exit(1);
+		throw new Error('Could not locate package.json in the current directory structure.')
 	}
 	var engineVersion = packageInfo.engines.node;
 	var check = args.loose ? loose : strict;
@@ -59,13 +58,12 @@ var checkVer = function () {
 			if (!args.switch) throw new Error();
 			switchVer(engineVersion);
 		} catch (err) {
-			console.log('Error: Current node version does not match the engines section of the package.json. Wanted ' + engineVersion + ' but was ' + process.version);
-			process.exit(1);
+			throw new Error('Error: Current node version does not match the engines section of the package.json. Wanted ' + engineVersion + ' but was ' + process.version);
 		}
 	}
 
 	console.log('info: Node version matches the engine version');
-	process.exit(0);
+	return true;
 };
 
 export default checkVer;
