@@ -1,0 +1,29 @@
+{
+  "name": "node-version-checker",
+  "version": "1.0.0",
+  "description": "Checks the current version of node against the `engines` property of package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "node",
+    "semver",
+    "checker"
+  ],
+  "author": "Justin Dragos <justin@gobold.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.2.1",
+    "find-parent-dir": "^0.3.0",
+    "shelljs": "^0.5.3",
+    "yargs": "^3.30.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repoistory": {
+    "type": "git",
+    "url": "https://github.com/gobold/node-version-checker"
+  }
+}
