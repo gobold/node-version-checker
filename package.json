@@ -25,5 +25,8 @@
   "repoistory": {
     "type": "git",
     "url": "https://github.com/gobold/node-version-checker"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
   }
 }
