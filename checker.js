@@ -17,8 +17,10 @@ var strict = function (actualVersion, engineVersion) {
 };
 
 var cleanVersion = function (version) {
-  if (version) return version.match(/[0-9]+(\.[0-9]+)*/)[0];
-}
+  if (version) {
+    return version.match(/[0-9]+(\.[0-9]+)*/)[0];
+  }
+};
 
 var loose = function (actualVersion, engineVersion) {
   var cleanedVer = cleanVersion(engineVersion);
@@ -35,7 +37,7 @@ var getPackageInfo = function () {
     return null;
   }
   return JSON.parse(file);
-}
+};
 
 var switchVer = function (version) {
   if (which('n')) {
@@ -43,19 +45,21 @@ var switchVer = function (version) {
     console.log(`info: Switched node version to ${cleanedVersion}`);
     return exec('n ' + cleanedVersion);
   }
-  throw new Error('Attempted to switch version, but n was not defined. If you want to use the --switch flag install the n manager with `npm install -g n`')
-}
+  throw new Error('Attempted to switch version, but n was not defined. If you want to use the --switch flag install the n manager with `npm install -g n`');
+};
 
 var checkVer = function () {
   var packageInfo = getPackageInfo();
   if (!packageInfo) {
-    throw new Error('Could not locate package.json in the current directory structure.')
+    throw new Error('Could not locate package.json in the current directory structure.');
   }
   var engineVersion = packageInfo.engines.node;
   var check = args.loose ? loose : strict;
   if (!check(process.version, engineVersion)) {
     try {
-      if (!args.switch) throw new Error();
+      if (!args.switch) {
+        throw new Error();
+      }
       switchVer(engineVersion);
     } catch (err) {
       throw new Error(`Error: Current node version does not match the engines section of the package.json. Wanted ${engineVersion} but was ${process.version}`);

@@ -4,7 +4,8 @@
   "description": "Checks the current version of node against the `engines` property of package.json",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "lint": "eslint --ext .js ."
   },
   "keywords": [
     "node",
@@ -27,6 +28,9 @@
     "url": "https://github.com/gobold/node-version-checker"
   },
   "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.10.3",
+    "eslint-config-gobold": "0.0.2",
     "mocha": "^2.3.4"
   }
 }
