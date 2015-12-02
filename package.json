@@ -4,7 +4,7 @@
   "description": "Checks the current version of node against the `engines` property of package.json",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha --require babel-core/register test"
   },
   "keywords": [
     "node",
@@ -27,6 +27,7 @@
     "url": "https://github.com/gobold/node-version-checker"
   },
   "devDependencies": {
+    "chai": "^3.4.1",
     "mocha": "^2.3.4"
   }
 }
