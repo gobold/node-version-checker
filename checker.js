@@ -1,4 +1,3 @@
-import yargs from 'yargs';
 import findParent from 'find-parent-dir';
 import fs from 'fs';
 import semver from 'semver';
@@ -12,8 +11,7 @@ let strictCheck = function (actualVersion, engineVersion) {
   return semver.satisfies(actualVersion, engineVersion);
 };
 
-
-var cleanVersion = function (version) {
+let cleanVersion = function (version) {
   if (version) {
     return version.match(/[0-9]+(\.[0-9]+)*/)[0];
   }
