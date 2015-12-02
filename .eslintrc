@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "es6": true,
+    "modules": true,
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "gobold",
+    "gobold/es6",
+  ],
+  "rules": {
+  }
+}

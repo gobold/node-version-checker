@@ -4,7 +4,8 @@
   "description": "Checks the current version of node against the `engines` property of package.json",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-core/register test"
+    "test": "mocha --require babel-core/register test",
+    "lint": "eslint --ext .js ."
   },
   "keywords": [
     "node",
@@ -28,6 +29,9 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.10.3",
+    "eslint-config-gobold": "0.0.2",
     "mocha": "^2.3.4"
   }
 }
