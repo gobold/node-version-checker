@@ -1,6 +1,6 @@
 {
   "name": "node-version-checker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Checks the current version of node against the `engines` property of package.json",
   "main": "dist/index.js",
   "bin": {
