@@ -33,7 +33,7 @@ var checker = require('node-version-checker/checker');
 checker();
 ```
 
-Checker will throw an error if the versions don't match the rules. You an optionally pass in an options object to modify behavior:
+Checker will throw an error if the versions don't match the rules. You can optionally pass in an options object to modify behavior:
 
 ```js
 const checker = require('node-version-checker/checker');
