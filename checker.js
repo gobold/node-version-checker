@@ -7,22 +7,22 @@ import {
 from 'shelljs';
 
 
-let strictCheck = function (actualVersion, engineVersion) {
+var strictCheck = function (actualVersion, engineVersion) {
   return semver.satisfies(actualVersion, engineVersion);
 };
 
-let cleanVersion = function (version) {
+var cleanVersion = function (version) {
   if (version) {
     return version.match(/[0-9]+(\.[0-9]+)*/)[0];
   }
 };
 
-let looseCheck = function (actualVersion, engineVersion) {
+var looseCheck = function (actualVersion, engineVersion) {
   var cleanedVer = cleanVersion(engineVersion);
   return semver.gt(actualVersion, cleanedVer);
 };
 
-let getPackageInfo = function () {
+var getPackageInfo = function () {
   var dir = findParent.sync(process.cwd(), 'package.json');
   if (!dir) {
     return null;
@@ -34,16 +34,16 @@ let getPackageInfo = function () {
   return JSON.parse(file);
 };
 
-let switchVer = function (version) {
+var switchVer = function (version) {
   if (which('n')) {
-    var cleanedVersion = cleanVersion(version);
+    let cleanedVersion = cleanVersion(version);
     console.log(`info: Switched node version to ${cleanedVersion}`);
     return exec('n ' + cleanedVersion);
   }
   throw new Error('Attempted to switch version, but n was not defined. If you want to use the --switch flag install the n manager with `npm install -g n`');
 };
 
-let checkVer = function (options) {
+var checkVer = function (options) {
   options = options || {};
   var packageInfo = getPackageInfo();
   if (!packageInfo) {
