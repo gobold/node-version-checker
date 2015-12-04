@@ -13,5 +13,6 @@
     "gobold/es6",
   ],
   "rules": {
-  }
+  },
+  "fix": true
 }

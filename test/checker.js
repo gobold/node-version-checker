@@ -2,13 +2,16 @@ import {
   expect
 }
 from 'chai';
-import { exec } from 'shelljs';
+import {
+  exec
+}
+from 'shelljs';
 
 
 describe('version checker', () => {
   process.chdir('test');
   const fs = require('fs');
-  const checker = require('../checker').default;
+  const checker = require('../dist/checker').default;
   const parentDir = require('find-parent-dir');
 
   before(() => exec('n 0.10.40'));
