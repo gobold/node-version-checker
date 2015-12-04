@@ -12,6 +12,14 @@ Options:
 * loose instead of checking semver.satisfies checks only if the current version is greater than the requested version
 * switch if the versions do not match attempt to use the `n` package manager to switch to a compliant node version
 
+## install
+
+Easy command line usage:
+`npm install -g node-version-checker`
+
+Dev dependency:
+`npm install node-version-checker --save-dev`
+
 ## Command Line Usage
 ```shell
 Usage: nvc [options]
@@ -38,4 +46,14 @@ Checker will throw an error if the versions don't match the rules. You can optio
 ```js
 const checker = require('node-version-checker/checker');
 checker({loose: true, switch: false});
+```
+
+## Package.json script
+
+```json
+{
+  "scripts": {
+    "checkVer": "node node_modules/node-version-checker"
+  }
+}
 ```
