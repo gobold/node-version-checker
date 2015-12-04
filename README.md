@@ -14,7 +14,7 @@ Options:
 
 ## Command Line Usage
 ```shell
-Usage: index [options]
+Usage: nvc [options]
 
 Options:
   --loose   Check only that the current node version is greater the required

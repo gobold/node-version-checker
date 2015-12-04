@@ -1,16 +1,21 @@
 {
   "name": "node-version-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Checks the current version of node against the `engines` property of package.json",
   "main": "index.js",
+  "bin": {
+    "nvc": "index.js"
+  },
   "scripts": {
     "test": "mocha --require babel-core/register test",
-    "lint": "eslint --ext .js --fix ."
+    "lint": "eslint --ext .js --fix .",
+    "checkVersion": "node index"
   },
   "pre-commit": {
     "silent": false,
     "colors": true,
     "run": [
+      "checkVersion",
       "lint"
     ]
   },
