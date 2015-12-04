@@ -29,7 +29,7 @@ describe('version checker', () => {
     try {
       checker();
     } catch (err) {
-      expect(err.message).to.equal('Error: Current node version does not match the engines section of the package.json. Wanted 1000.0.0 but was v0.10.40')
+      expect(err.message).to.equal('Current node version does not match the engines section of the package.json. Wanted 1000.0.0 but was v0.10.40')
     }
   });
 
@@ -43,7 +43,7 @@ describe('version checker', () => {
     try {
       checker();
     } catch (err) {
-      expect(err.message).to.equal('Error: Current node version does not match the engines section of the package.json. Wanted 1000.0.0 but was v0.10.40')
+      expect(err.message).to.equal('Current node version does not match the engines section of the package.json. Wanted 1000.0.0 but was v0.10.40')
     }
   });
 
@@ -55,6 +55,30 @@ describe('version checker', () => {
     };
     writeFile(packageInfo);
     expect(checker()).to.be.ok;
+  });
+
+  it('should throw an error if package does not define an engine for node', () => {
+    var packageInfo = {
+      engines: {
+        php: '1000.0.0'
+      }
+    };
+    writeFile(packageInfo);
+    try {
+      checker();
+    } catch (err) {
+      expect(err.message).to.equal('Package.json does not define an engine for node')
+    }
+  });
+
+  it('should throw an error if package does not define an engines section', () => {
+    var packageInfo = {};
+    writeFile(packageInfo);
+    try {
+      checker();
+    } catch (err) {
+      expect(err.message).to.equal('Package.json does not define an engine for node')
+    }
   });
 
   describe('loose', () => {
@@ -83,7 +107,7 @@ describe('version checker', () => {
       try {
         checker(options);
       } catch (err) {
-        expect(err.message).to.equal('Error: Current node version does not match the engines section of the package.json. Wanted 10.5.0 but was v0.10.40')
+        expect(err.message).to.equal('Current node version does not match the engines section of the package.json. Wanted 10.5.0 but was v0.10.40')
       }
     });
   });

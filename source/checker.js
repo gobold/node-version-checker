@@ -49,6 +49,9 @@ var checkVer = function (options) {
   if (!packageInfo) {
     throw new Error('Could not locate package.json in the current directory structure.');
   }
+  if (!packageInfo.engines || !packageInfo.engines.node){
+    throw new Error('Package.json does not define an engine for node');
+  }
   var engineVersion = packageInfo.engines.node;
   var check = options.loose ? looseCheck : strictCheck;
   if (!check(process.version, engineVersion)) {
@@ -59,7 +62,7 @@ var checkVer = function (options) {
 
       switchVer(engineVersion);
     } catch (err) {
-      throw new Error(`Error: Current node version does not match the engines section of the package.json. Wanted ${engineVersion} but was ${process.version}`);
+      throw new Error(`Current node version does not match the engines section of the package.json. Wanted ${engineVersion} but was ${process.version}`);
     }
   }
 
