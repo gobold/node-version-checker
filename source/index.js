@@ -15,6 +15,6 @@ try {
   checker(options);
   console.log('info: Node version matches the engine version');
 } catch (err) {
-  console.log(err.message);
+  console.log(`Error: ${err.message}`);
   process.exit(1);
 }
