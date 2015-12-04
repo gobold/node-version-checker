@@ -2,12 +2,16 @@ import {
   expect
 }
 from 'chai';
+import { exec } from 'shelljs';
+
 
 describe('version checker', () => {
   process.chdir('test');
   const fs = require('fs');
   const checker = require('../checker').default;
   const parentDir = require('find-parent-dir');
+
+  before(() => exec('n 0.10.40'));
 
   afterEach(() => fs.writeFileSync('package.json', JSON.stringify({})));
   const writeFile = (packageInfo) => fs.writeFileSync('package.json', JSON.stringify(packageInfo));
