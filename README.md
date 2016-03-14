@@ -37,14 +37,14 @@ Options:
 Just require checker and invoke it.
 
 ```js
-var checker = require('node-version-checker/checker');
+var checker = require('node-version-checker');
 checker();
 ```
 
 Checker will throw an error if the versions don't match the rules. You can optionally pass in an options object to modify behavior:
 
 ```js
-const checker = require('node-version-checker/checker');
+const checker = require('node-version-checker');
 checker({loose: true, switch: false});
 ```
 
