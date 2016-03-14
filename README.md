@@ -34,18 +34,35 @@ Options:
 ```
 
 ## Node Usage
-Just require checker and invoke it.
+Just require checker and then invoke it.
 
 ```js
-var checker = require('node-version-checker');
-checker();
+//Require syntax
+var checker = require('node-version-checker').default;
+//import syntax
+import checker from 'node-version-checker';
 ```
 
 Checker will throw an error if the versions don't match the rules. You can optionally pass in an options object to modify behavior:
 
 ```js
-const checker = require('node-version-checker');
+//Check with default options
+checker()
+//Check with options provided.
 checker({loose: true, switch: false});
+```
+
+### Node Options
+You can specify the following options when using through node:
+```js
+const options = {
+  //Check only that the current node version is greater the required engine version when set to true.
+  //Default is false.
+  loose: true || false,
+  //If the node version doesn't satisfy the engine version attempt to use the n pacakage manager to switch the current node version to compliant version.
+  //Defaul is false
+  switch: true || false
+}
 ```
 
 ## Package.json script
