@@ -60,7 +60,7 @@ const options = {
   //Default is false.
   loose: true || false,
   //If the node version doesn't satisfy the engine version attempt to use the n pacakage manager to switch the current node version to compliant version.
-  //Defaul is false
+  //Default is false
   switch: true || false
 }
 ```
