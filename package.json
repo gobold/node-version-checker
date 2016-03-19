@@ -1,10 +1,10 @@
 {
   "name": "node-version-checker",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "description": "Checks the current version of node against the `engines` property of package.json",
-  "main": "dist/index.js",
+  "main": "dist/checker.js",
   "bin": {
-    "nvc": "dist/index.js"
+    "nvc": "bin/nvc"
   },
   "scripts": {
     "test": "gulp test",
