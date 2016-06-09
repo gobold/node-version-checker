@@ -1,6 +1,6 @@
 # node-version-checker
 
-Tool for checking if the current node version matches what is provided in the `enginges` section of the project's `package.json` file.
+Tool for checking if the current node version matches what is provided in the `engines` section of the project's `package.json` file.
 
 Main functionality:
 * Attempts to find a package.json in the current directory or one of its ancestors.
